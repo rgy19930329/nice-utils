@@ -2,15 +2,16 @@
 
 | Util | Desc  | Remarks |
 | ---- | ---- | ---- |
-| fetch | 客户端ajax网络请求封装 | 无 |
+| core | 基础方法集合 | - |
+| fetch | 客户端ajax网络请求封装 | - |
 | wdio | wilddog io 操作封装 | 需在 &lt;head&gt; 标签中添加 &lt;script src="https://cdn.wilddog.com/js/client/current/wilddog.js"&gt;&lt;/script&gt; 配合使用 |
-| storage | localStorage 操作封装 | 无 |
-| validator | 表单校验方法 | 方法接收3个参数 (rule, value, callback) |
+| storage | localStorage 操作封装 | - |
+| validator | rc-form 表单校验方法 | 方法接收3个参数 (rule, value, callback) |
 
 ### fetch
 
 ```js
-import { fetch } from "nice-ui";
+import { fetch } from "@nice/nice-utils";
 
 const { get, post } = fetch;
 
@@ -57,7 +58,7 @@ post("/yapi/list-page-delete", { bid });
 ### wdio
 
 ```js
-import { wdio } from "nice-ui";
+import { wdio } from "@nice/nice-utils";
 
 const { each, remove, add, set, get } = wdio;
 
@@ -75,7 +76,7 @@ get(ref, fn)
 ### storage
 
 ```js
-import { local_storage, session_storage } from "nice-ui";
+import { local_storage, session_storage } from "@nice/nice-utils";
 
 local_storage.set(key, value);
 local_storage.get(key);
@@ -91,7 +92,7 @@ session_storage.clear();
 ### validator
 
 ```js
-import { validator } from "nice-ui";
+import { validator } from "@nice/nice-utils";
 
 const { amountValidator } = validator;
 

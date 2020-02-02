@@ -2,17 +2,31 @@
   "name": "@nice/nice-utils",
   "version": "1.0.0",
   "description": "js utils",
-  "main": "index.js",
+  "main": "cjs/index.js",
+  "module": "es/index.js",
   "scripts": {
-    "build": ""
+    "build": "rollup --config rollup.config.js",
+    "build:prod": "rollup --config rollup.config.js --environment NODE_ENV:production"
   },
   "author": "ranguangyu",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0"
   },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-external-helpers": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "rollup": "^1.31.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.2.0"
+  },
   "files": [
-    "src",
+    "cjs",
+    "es",
     "README.md"
   ]
 }
