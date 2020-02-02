@@ -1,5 +1,5 @@
 {
-  "name": "@nice/nice-utils",
+  "name": "nice-utils",
   "version": "1.0.0",
   "description": "js utils",
   "main": "cjs/index.js",
@@ -8,7 +8,7 @@
     "build": "rollup --config rollup.config.js",
     "build:prod": "rollup --config rollup.config.js --environment NODE_ENV:production"
   },
-  "author": "ranguangyu",
+  "author": "rgy19930329",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0"
