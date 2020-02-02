@@ -27,6 +27,7 @@
   "files": [
     "cjs",
     "es",
-    "README.md"
+    "README.md",
+    "VERSION.md"
   ]
 }
