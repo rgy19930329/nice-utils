@@ -1,19 +1,26 @@
+import path from 'path'
+
 import babel from 'rollup-plugin-babel'
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import json from 'rollup-plugin-json'
+import alias from 'rollup-plugin-alias'
 import { terser } from 'rollup-plugin-terser'
 
 const isProd = process.env.NODE_ENV === 'production'
 
+/* 插件 */
 let plugins = [
   resolve(),
   commonjs(),
+  json(),
   babel({
     exclude: 'node_modules/**'
   }),
-  json(),
-];
+  alias({
+    '@': path.resolve(__dirname, 'src')
+  })
+]
 
 isProd && (plugins = plugins.concat([terser()]))
 
