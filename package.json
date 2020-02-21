@@ -5,7 +5,9 @@
   "main": "cjs/index.js",
   "module": "es/index.js",
   "scripts": {
-    "watch": "rollup --config rollup.config.js --watch",
+    "watch:es": "rollup --config rollup.config.js --environment MODULE:es --watch",
+    "watch:cjs": "rollup --config rollup.config.js --environment MODULE:cjs --watch",
+    "watch": "npm run watch:es",
     "build": "rollup --config rollup.config.js",
     "build:prod": "rollup --config rollup.config.js --environment NODE_ENV:production"
   },

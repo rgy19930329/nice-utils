@@ -9,6 +9,8 @@ import { terser } from 'rollup-plugin-terser'
 
 const isProd = process.env.NODE_ENV === 'production'
 
+const module = process.env.MODULE
+
 /* 插件 */
 let plugins = [
   resolve(),
@@ -18,25 +20,44 @@ let plugins = [
     exclude: 'node_modules/**'
   }),
   alias({
-    '@': path.resolve(__dirname, 'src')
+    '@src': path.resolve(__dirname, 'src')
   })
 ]
 
 isProd && (plugins = plugins.concat([terser()]))
 
-export default {
-  input: 'index.js',
-  plugins,
-  sourceMap: isProd,
-  external: ['axios'],
-  output: [
+/* 输出 */
+let output = [
+  {
+    file: 'es/index.js',
+    format: 'es'
+  },
+  {
+    file: 'cjs/index.js',
+    format: 'cjs'
+  }
+]
+
+if (module === 'es') {
+  output = [
     {
-      file: isProd ? 'es/index.min.js' : 'es/index.js',
+      file: 'es/index.js',
       format: 'es'
-    },
+    }
+  ]
+} else if (module === 'cjs') {
+  output = [
     {
-      file: isProd ? 'cjs/index.min.js' : 'cjs/index.js',
+      file: 'cjs/index.js',
       format: 'cjs'
     }
   ]
+}
+
+export default {
+  input: 'index.js',
+  output,
+  plugins,
+  sourceMap: isProd,
+  external: ['axios'],
 }
